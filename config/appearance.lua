@@ -1,8 +1,9 @@
 local gpu_adapters = require('utils.gpu-adapter')
 local backdrops = require('utils.backdrops')
 local colors = require('colors.custom')
+local platform = require('utils.platform')
 
-return {
+local config = {
    max_fps = 120,
    front_end = 'WebGpu',
    enable_wayland = false,
@@ -21,9 +22,6 @@ return {
 
    -- color scheme
    colors = colors,
-
-   -- background
-   background = backdrops:initial_options(false), -- set to true if you want wezterm to start on focus mode
 
    -- scrollbar
    enable_scroll_bar = true,
@@ -67,3 +65,21 @@ return {
       target = 'CursorColor',
    },
 }
+
+local style = {}
+if platform.is_mac then
+   style = {
+      window_background_opacity = 0.75,
+      macos_window_background_blur = 50,
+   }
+else
+   style = {
+      background = backdrops:initial_options(false),
+   }
+end
+
+for k, v in pairs(style) do
+   config[k] = v
+end
+
+return config
