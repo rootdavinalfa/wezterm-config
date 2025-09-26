@@ -69,7 +69,7 @@ local config = {
 local style = {}
 if platform.is_mac then
    style = {
-      window_background_opacity = 0.65,
+      window_background_opacity = 0.80,
       macos_window_background_blur = 15,
    }
 else
