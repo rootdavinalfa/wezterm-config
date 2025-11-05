@@ -71,6 +71,14 @@ if platform.is_mac then
    style = {
       window_background_opacity = 0.80,
       macos_window_background_blur = 15,
+      window_decorations = 'RESIZE',
+
+      window_padding = {
+         left = 3,
+         right = 3,
+         top = 10,
+         bottom = 10,
+      },
    }
 else
    style = {
